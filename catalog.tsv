@@ -1,0 +1,21 @@
+# Single source of truth for both installers. install.ps1 and install.sh read this
+# file, so adding a skill or an external plugin is one edit, not two.
+#
+# Columns, in order, separated by a literal pipe:
+#   kind | name | source | spec | verifiedHost | description
+#
+# kind = local     Shipped in this repo. `source` is the directory at the repo root
+#                  that gets copied into the skills root.
+# kind = external  Lives in someone else's open-source repo. Nothing is vendored:
+#                  the installer prints `source` (the repo URL) plus the commands
+#                  for `spec`, and never runs them.
+#
+# spec          npm package spec for external entries; "-" for local ones.
+# verifiedHost  The DSH version `spec` was verified against; "-" for local ones.
+# description   One line, no pipe characters.
+local|ship|ship|-|-|End-to-end delivery: grill, spec, tickets, test-first build, review, close-out (/ship only)
+local|grilling|grilling|-|-|Interviews you about a plan until nothing is silently assumed
+local|tdd|tdd|-|-|Red-green loop at agreed seams, plus the anti-patterns that make tests worthless
+local|diagnosing-bugs|diagnosing-bugs|-|-|Bounded diagnosis loop gated on a feedback loop that goes red
+external|dsh-ops|https://github.com/T-Auto/dsh-ops|dsh-ops@0.4.1|0.2.1-rc.3|DSH low-level tool surface: compact file and discovery tools, PTC batch API
+external|dsh-connect-workbuddy|https://github.com/dingminhua/dsh-connect-workbuddy|dsh-connect-workbuddy@5.12.1|0.2.1-rc.3|Connects a locally signed-in WorkBuddy account to DSH as a model provider
