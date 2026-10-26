@@ -1,0 +1,7 @@
+# Skills are read by agents, which compare text byte-for-byte. Normalise the
+# stored form and the checkout form so every device sees identical bytes.
+* text=auto eol=lf
+
+# Shell scripts must keep LF or they fail to run on POSIX.
+*.sh   text eol=lf
+*.ps1  text eol=crlf
